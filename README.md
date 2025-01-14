@@ -2,6 +2,8 @@
 
 Forahia Chef is a simple React application that helps you manage your ingredients and generate recipes based on the ingredients you have on hand.
 
+![Forahia Chef Screenshot](./src/images/image.png)
+
 ## Features
 
 - Add ingredients to your list.
