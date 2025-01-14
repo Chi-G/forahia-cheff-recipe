@@ -4,11 +4,11 @@ export default function IngredientsList(props) {
     ))
     return (
         <section>
-            <h2>Ingredients on hand:</h2>
+            <h2>Your Ingredients:</h2>
             <ul className="ingredients-list" aria-live="polite">{ingredientsListItems}</ul>
             {props.ingredients.length > 3 && <div className="get-recipe-container">
                 <div>
-                    <h3>Ready for a recipe?</h3>
+                    <h3>Get your recipe?</h3>
                     <p>Generate a recipe from your list of ingredients.</p>
                 </div>
                 <button onClick={props.toggleRecipeShown}>Get a recipe</button>
