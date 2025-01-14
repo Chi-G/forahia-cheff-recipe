@@ -1,17 +1,17 @@
 import React from "react"
 import IngredientsList from "./components/IngredientsList"
 import ForahiaRecipe from "./components/ForahiaRecipe"
+import { getRecipeFromChefClaude, getRecipeFromMistral } from "./ai"
 
 export default function Main() {
-
     const [ingredients, setIngredients] = React.useState(
-        ["all the main spices", "pasta", "ground beef", "tomato paste"]
+        ["chicken", "all the main spices", "corn", "heavy cream", "pasta"]
     )
+    const [recipe, setRecipe] = React.useState("")
 
-    const [recipeShown, setRecipeShown] = React.useState(false)
-
-    function toggleRecipeShown() {
-        setRecipeShown(prevShown => !prevShown)
+    async function getRecipe() {
+        const recipeMarkdown = await getRecipeFromChefClaude(ingredients)
+        setRecipe(recipeMarkdown)
     }
 
     function addIngredient(formData) {
@@ -35,13 +35,13 @@ export default function Main() {
             {ingredients.length > 0 &&
                 <IngredientsList
                     ingredients={ingredients}
-                    toggleRecipeShown={toggleRecipeShown}
+                    toggleRecipeShown={getRecipe}
                 />
             }
 
 
             {/*  using conditional rendering to display the recommendations  */}
-            {recipeShown && <ForahiaRecipe />}
+            {recipe && <ForahiaRecipe />}
         </main>
     )
 }
